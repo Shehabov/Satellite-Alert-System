@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>Satellite Alert System</title>
+    <link rel="stylesheet" type="text/css" href="orbtrak.css" />
+    <script src="predictlib.js" type="text/javascript"></script>
+    <script src="tle.js" type="text/javascript"></script>
+    <script src="orbtrak.js" type="text/javascript"></script>
+
+    <style>
+        body {
+            background-color: #f0f0f0;
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+        }
+
+        #loginContainer {
+            background-color: #fff;
+            max-width: 400px;
+            margin: 50px auto;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        form {
+            margin-top: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #555;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 16px;
+            box-sizing: border-box;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: #fff;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+		
+		
+        #orbTrakContent {
+            display: none;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body onload="load()">
+    <div id="loginContainer">
+	<img src="./orbimages/logo.png" alt="Satellite Alert System Logo" style="width: 100px; height: 100px;">
+        <h1>Satellite Alert System</h1>
+        <form>
+            <label for="username">Username:</label>
+            <input type="text" id="username" required>
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" required>
+
+            <button type="button" onclick="authenticate()">Login</button>
+        </form>
+		<p>For registration requests, please send an email to: <a href="mailto:shehabberam20@gmail.com">shehabberam20@gmail.com</a></p>
+    </div>
+	
+    <div id="orbTrakContent">
+        <h1>Satellite Alert System</h1>
+        <div id="map" style="position:absolute; left:500px; width: 540px; height: 270px;""></div>
+        <div id="passes" style="position:absolute; top:300px; left:350px"></div>
+    </div>
+
+    <script>
+        // Hardcoded user credentials array
+        const users = [
+            { username: 'user1', password: 'password1' },
+            { username: 'user2', password: 'password2' },
+            // Add more users as needed
+        ];
+
+        function authenticate() {
+            const usernameInput = document.getElementById('username').value;
+            const passwordInput = document.getElementById('password').value;
+
+            // Check if user credentials are valid
+            const isValidUser = users.some(user => user.username === usernameInput && user.password === passwordInput);
+
+            if (isValidUser) {
+                alert('Login successful!');
+                // Show the OrbTrak content after successful login
+                document.getElementById('loginContainer').style.display = 'none';
+                document.getElementById('orbTrakContent').style.display = 'block';
+                // Initialize OrbTrak content
+                Orb.startTracking(document.getElementById('map'), 41.0082, 28.9784);
+                Orb.generateTable(document.getElementById('passes'));
+            } else {
+                alert('Invalid username or password. Please try again.');
+            }
+        }
+    </script>
+</body>
+</html>
