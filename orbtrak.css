@@ -1,0 +1,74 @@
+th.orb-header { border: 1px solid #C4DCB3; padding: 4px; background: #7C9F61 }
+
+td.orb-detail { border: 1px solid #DFEBD5; padding: 4px; background: #C4DCB3 }
+
+td.orb-detailVisible { border: 1px solid #F9A152; padding: 4px; background: #F18636 }
+
+
+        #orbTrakContent {
+            display: none;
+            margin: 0;
+            text-align: center;
+        }
+
+        #passes {
+			
+            overflow-y: auto; /* Make the pass table scrollable */
+            max-height: 260px; /* Set a maximum height for the scrollable area */
+        }
+
+	body {
+            margin: 0; /* Remove default margin */
+            overflow: hidden; /* Prevent scrollbars */
+            font-family: Arial, sans-serif;
+        }
+		h1 {
+			color: silver;
+			font-size: 26pt;
+			font-family: Arial;
+			font-weight: bold;
+		}
+
+        #background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('./orbimages/full.png'); /* Replace with your background image */
+            background-size: cover; /* Cover the entire viewport */
+            z-index: -1; /* Send it to the back */
+        }
+
+        #main {
+            background-color: white;
+            margin-top: 0;
+            display: flex;
+            flex-direction: row; /* Align items horizontally */
+            align-items: center;
+			background-image: url('./orbimages/b1.png'); /* Replace with the path to your background image */
+			background-size: cover; /* Cover the entire div */
+			background-position: center; /* Center the background image */
+			background-repeat: no-repeat; /* Do not repeat the background image */
+        }
+
+        /* Modal styles */
+        #infoModal {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            z-index: 2;
+        }
+
+        #closeModalBtn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            cursor: pointer;
+        }
