@@ -46,4 +46,4 @@ Welcome to the Satellite Alert System repository! This project provides a real-t
 - The pass table provides a list of upcoming satellite passes with relevant details
 
 ### Acknowledgments
-- Special thanks to John A. Magliacane (KD2BD) for the PredictLib.js library.
+Special thanks to John A. Magliacane (KD2BD) for the PredictLib.js library.
