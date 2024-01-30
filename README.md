@@ -45,7 +45,7 @@ Welcome to the Satellite Alert System repository! This project provides a real-t
 - Click on the information icons or markers for detailed satellite pass information
 - The pass table provides a list of upcoming satellite passes with relevant details
 
-GitHub Deployment Instructions
+## GitHub Deployment Instructions
 
 ### Fork the Repository
 
