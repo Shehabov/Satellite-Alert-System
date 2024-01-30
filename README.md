@@ -2,7 +2,7 @@
 
 Welcome to the Satellite Alert System repository! This project provides a real-time satellite tracking system with features to visualize satellite orbits and generate pass tables. Below is an in-depth guide on how to use, deploy, and set up the system.
 
-## Components
+## File Structure
 
 1. **Home Page (`index.js`):**
    - The main webpage of the Satellite Alert System.
@@ -73,21 +73,21 @@ GitHub Deployment Instructions
 
         bash
 
-cd Satellite-Alert-System
+        cd Satellite-Alert-System
 
-Verify the remote URL:
+### Verify the remote URL:
 
-bash
+      bash
 
-git remote -v
+      git remote -v
 
-If the URL is pointing to your fork, you can skip this step. If not, update the remote URL:
+### If the URL is pointing to your fork, you can skip this step. If not, update the remote URL:
 
-bash
+      bash
 
-        git remote set-url origin https://github.com/[YourUsername]/Satellite-Alert-System.git
+      git remote set-url origin https://github.com/[YourUsername]/Satellite-Alert-System.git
 
-GitHub Pages Configuration
+### GitHub Pages Configuration
 
     Enable GitHub Pages:
         In your forked repository on GitHub, go to the "Settings" tab.
@@ -95,13 +95,13 @@ GitHub Pages Configuration
         Under "Source," select the main branch.
         GitHub Pages will now be enabled, and your site will be published at https://[YourUsername].github.io/Satellite-Alert-System/.
 
-Access Deployed Site
+### Access Deployed Site
 
     Access Deployed Site:
         Once GitHub Pages has finished building your site, you can access it at the provided URL.
         It might take a few minutes for the changes to reflect.
 
-Updating the Deployed Site
+### Updating the Deployed Site
 
     Update and Commit Changes:
         Make any desired changes to your local clone.
@@ -112,7 +112,7 @@ Updating the Deployed Site
     git add .
     git commit -m "Update site with new features"
 
-Push Changes:
+### Push Changes:
 
     Push the changes to your fork on GitHub:
 
@@ -123,7 +123,7 @@ Push Changes:
     GitHub Pages Auto-Update:
         GitHub Pages will automatically rebuild and update your site based on the changes made to the main branch.
 
-Custom Domain (Optional)
+### Custom Domain (Optional)
 
     Custom Domain (Optional):
         If you have a custom domain, you can configure it in the "Custom domain" section in GitHub Pages settings.
@@ -131,12 +131,12 @@ Custom Domain (Optional)
 
 Now the project should be successfully deployed and accessible via GitHub Pages. Feel free to reach out if you encounter any issues or have further questions!
 
-### Resources
+## Resources
 
  - PredictLib.js: https://www.qsl.net/kd2bd/predict.html
  - NORAD Archives: http://celestrak.org/NORAD/archives/
 
-### Acknowledgments
+## Acknowledgments
       Special thanks to John A. Magliacane (KD2BD) for the PredictLib.js library.
 
 You are welcome to contribute, report issues or provide feedback. Happy satellite tracking!
