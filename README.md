@@ -33,9 +33,10 @@ Welcome to the Satellite Alert System repository! This project provides a real-t
 
 ### Usage Guide
 
-- The red circled dots on the map are position coordinates of satellites.
-- Satellite position coordinated are updated by every 5 secs.
+- The red pin on map shows the user location on map.
 - The user location intially is set to Lat Long Coordinates of Istanbul.
+- The red circled dots on the map are position coordinates of satellites.
+- Satellite position coordinated are updated after every 5 secs.
 - Table below the map gives the passes information specific to the user location.
 - Click on RESET Button to reset the page any time.
    ![1](./orbimages/guide/1.png)
