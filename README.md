@@ -31,6 +31,11 @@ Welcome to the Satellite Alert System repository! This project provides a real-t
 
 - Web browser with JavaScript support
 
+### Usage Guide
+
+- Click on RESET Button to reset the page any time.
+   ![1](./orbimages/guide/1.png)
+
 ### Installation
 
 1. Clone the repository:
