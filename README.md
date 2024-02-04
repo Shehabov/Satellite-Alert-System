@@ -43,7 +43,7 @@ Welcome to the Satellite Alert System repository! This project provides a real-t
 - Click on GET USER LOCATION Button to automatically get your present location updated on map and calculate the passes data accordingly.
    ![2](./orbimages/guide/2.png)
 
-- Click on SET USER LOCATION Button after entering the lat long in the input fields to manually update on map and calculate the passes data accordingly.
+- Click on SET USER LOCATION Button after entering the lat long in the input fields to manually update your locationon map and calculate the passes data accordingly.
    ![3](./orbimages/guide/3.png)
 
 - Click on the image Buttons to view the ABOUT and CONTACT information
