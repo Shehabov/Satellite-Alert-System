@@ -33,9 +33,22 @@ Welcome to the Satellite Alert System repository! This project provides a real-t
 
 ### Usage Guide
 
+- The red circled dots on the map are position coordinates of satellites.
+- Satellite position coordinated are updated by every 5 secs.
+- The user location intially is set to Lat Long Coordinates of Istanbul.
+- Table below the map gives the passes information specific to the user location.
 - Click on RESET Button to reset the page any time.
    ![1](./orbimages/guide/1.png)
 
+- Click on GET USER LOCATION Button to automatically get your present location updated on map and calculate the passes data accordingly.
+   ![2](./orbimages/guide/2.png)
+
+- Click on SET USER LOCATION Button after entering the lat long in the input fields to manually update on map and calculate the passes data accordingly.
+   ![3](./orbimages/guide/3.png)
+
+- Click on the image Buttons to view the ABOUT and CONTACT information
+   ![4](./orbimages/guide/4.png)
+  
 ### Installation
 
 1. Clone the repository:
