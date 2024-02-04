@@ -1,27 +1,38 @@
-th.orb-header { border: 1px solid #C4DCB3; padding: 4px; background: #7C9F61 }
+		/* orb-header  div styles */
+		th.orb-header { 
+			border: 1px solid #C4DCB3; padding: 4px; background: #7C9F61 
+		}
 
-td.orb-detail { border: 1px solid #DFEBD5; padding: 4px; background: #C4DCB3 }
+		/* orb-detail div styles */
+		td.orb-detail { 
+			border: 1px solid #DFEBD5; padding: 4px; background: #C4DCB3 
+		}
 
-td.orb-detailVisible { border: 1px solid #F9A152; padding: 4px; background: #F18636 }
+		/* orb-detailVisible div styles */
+		td.orb-detailVisible { 
+			border: 1px solid #F9A152; padding: 4px; background: #F18636 
+		}
 
-
+		/* orbTrakContent div styles */
         #orbTrakContent {
             display: none;
-            margin: 0;
             text-align: center;
         }
 
+		/* Pass div styles */
         #passes {
-			
-            overflow-y: auto; /* Make the pass table scrollable */
+			overflow-y: auto; /* Make the pass table scrollable */
             max-height: 260px; /* Set a maximum height for the scrollable area */
         }
 
-	body {
+		/* Body styles */
+		body {
             margin: 0; /* Remove default margin */
             overflow: hidden; /* Prevent scrollbars */
             font-family: Arial, sans-serif;
         }
+		
+		/* Heading h1 styles */
 		h1 {
 			color: silver;
 			font-size: 26pt;
@@ -29,6 +40,7 @@ td.orb-detailVisible { border: 1px solid #F9A152; padding: 4px; background: #F18
 			font-weight: bold;
 		}
 
+		/* Background styles */
         #background {
             position: fixed;
             top: 0;
@@ -39,9 +51,10 @@ td.orb-detailVisible { border: 1px solid #F9A152; padding: 4px; background: #F18
             background-size: cover; /* Cover the entire viewport */
             z-index: -1; /* Send it to the back */
         }
-
+		
+		/* Main styles */
         #main {
-            background-color: white;
+			background-color: white;
             margin-top: 0;
             display: flex;
             flex-direction: row; /* Align items horizontally */
@@ -66,9 +79,65 @@ td.orb-detailVisible { border: 1px solid #F9A152; padding: 4px; background: #F18
             z-index: 2;
         }
 
+		/* Modal Button Close sign styles */
         #closeModalBtn {
             position: absolute;
             top: 10px;
             right: 10px;
             cursor: pointer;
+        }
+		
+		/* Action Button styles */	
+		.action-buttons button {
+			width: 200px;
+			display: inline-block;
+			font-weight: bold;
+			text-decoration: none;
+			cursor: pointer;
+			border: 2px solid #556B2F; /* Greenish-olive shade */
+			color: white;
+			background-color: #556B2F;
+			transition: background-color 0.3s, color 0.3s, border 0.3s;
+		}
+		
+		.action-buttons button:hover {
+			background-color: white;
+			color: #000000;
+		}
+		
+		.action-buttons button.user-location {
+			border: 2px solid #B8860B; /* Yellow shade for SET USER LOCATION button */
+			background-color: #B8860B;
+		}
+		
+		.action-buttons button.user-location:hover {
+			background-color: white;
+			color: #000000;
+		}
+
+		.action-buttons button.ground-station {
+			border: 2px solid #1E90FF; /* Bluish shade for ADD GROUND STATION button */
+			background-color: #1E90FF;
+			
+		}
+		
+		.action-buttons button.ground-station:hover {
+			background-color: white;
+			color: #000000;
+		}
+		 /* hover effect for About & Contact images */
+        #main-gif img:hover,
+        #main img:hover {
+            border: 2px solid #007BFF;
+            border-radius: 3px;
+        }
+
+        /* Animation for the satellite gif */
+        #main-gif img {
+            transition: transform 0.3s ease-in-out;
+        }
+	
+		/* hover effect for satellite gif */
+        #main-gif img:hover {
+            transform: scale(1.2);
         }

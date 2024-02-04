@@ -1,34 +1,40 @@
-/****************************************************************************
-*             OrbTrak: A satellite orbit visualization library              *
-*****************************************************************************/
 
-var Orb = 
-	{
-		satelliteMarkers: new Array(),
+var Orb = {
+    satelliteMarkers: new Array(),
+    isInitialized: false, // New flag to track initialization status
 
-		startTracking: function(map, homeLat, homeLng)
-		{
-			Orb.map = map;
-			Orb.crossBrowserSetStyle(map, "background-image: url(orbimages/world.jpg); overflow: hidden;", true);
+    startTracking: function(map, homeLat, homeLng) {
+        Orb.map = map;
 
-			var frag = document.createDocumentFragment();
-			var div = document.createElement("div");
-			div.id = "home";
-			Orb.crossBrowserSetStyle(div, "position:relative; width: 17px; height: 24px; background-image: url(orbimages/home.png);", false);
-			frag.appendChild(div);
-			Orb.map.appendChild(frag);
-			Orb.home = document.getElementById("home");
+        // Check if OrbTrak is already initialized
+        if (!Orb.isInitialized) {
+            Orb.crossBrowserSetStyle(map, "background-image: url(orbimages/world.jpg); overflow: hidden;", true);
 
-			PLib.InitializeData();
-			Orb.setHomeCoordinates(homeLat, homeLng);
-			Orb.createSatelliteMarkers();
-			Orb.updateSatellites();
-		},
+            var frag = document.createDocumentFragment();
+            var div = document.createElement("div");
+            div.id = "home";
+
+            Orb.crossBrowserSetStyle(div, "position:relative; width: 17px; height: 24px; background-image: url(orbimages/home.png);", false);
+            frag.appendChild(div);
+            Orb.map.appendChild(frag);
+            Orb.home = document.getElementById("home");
+
+            PLib.InitializeData();
+            Orb.setHomeCoordinates(homeLat, homeLng);
+            Orb.createSatelliteMarkers();
+            Orb.updateSatellites();
+
+            Orb.isInitialized = true; // Set OrbTrak as initialized
+        } else {
+            // OrbTrak is already initialized, update home coordinates only
+            Orb.setHomeCoordinates(homeLat, homeLng);
+        }
+    },
 
 		setHomeCoordinates: function(homeLat, homeLng)
 		{
 			PLib.configureGroundStation(homeLat, homeLng);
-
+			console.log("Setting Home Coordinates:", homeLat, homeLng);
 			Orb.home.style.top = ((-homeLat + 90) * 1.5 - 12.0) + "px";
 			Orb.home.style.left =  ((parseInt(homeLng) + 180) * 1.5 - 12.0) + "px";
 		},

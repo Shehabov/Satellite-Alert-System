@@ -12,7 +12,9 @@
 
 <body onload="initializeOrbTrak()">
     <div id="background"></div>
-    <div id="main">
+	
+	<!-- Main content -->
+    <div id="main" style="max-height: 70px; overflow: hidden;">
         <div id="main-gif">
             <img src="./orbimages/sat2.gif" style="width: 100px; height: 75px;">
         </div>
@@ -22,16 +24,30 @@
         <div>
             <img src="./orbimages/logo.png" onclick="openInfoModal('<h2>About</h2> <br>Welcome to the Satellite Alert System!\n\nDiscover real-time satellite tracking and information:\n\n1. Explore the numbered dots on the map representing satellites in orbit.\n2. Check the pass table for detailed information on each satellite, including their names and upcoming passes.\n3. Stay informed about satellite activities and positions.\n\nFor any inquiries or assistance, feel free to contact us', 'System Information')" style="width: 75px; height: 75px; margin-left: 350px; cursor: pointer;">
         </div>
+		
         <div>
             <img src="./orbimages/copy.png" style="width: 78px; height: 78px; cursor: pointer;" onclick="openInfoModal('<h2>Contact</h2> <br> Hey there! I\'m Shehab Beram, also known as Shehbov on Github. <br>Explore my coding adventures and projects there. <br> If you have ideas, questions, or just want to chat, feel free to reach out at <br>shehabberam20@gmail.com. <br> Let\'s connect and create something awesome together!', 'Contact Information')">
         </div>
     </div>
-
+	
+     
+	<!-- orbTrakContent content -->
     <div id="orbTrakContent">
-        <div id="map" style="position:absolute; left:420px; width: 540px; height: 270px; border-style: solid; border-width:2px"></div>
-        <div id="passes" style="position:absolute; top:358px; left:245px"></div>
-    </div>
-
+		
+		<div class="action-buttons">
+		<button onclick="resetPage()">RESET</button>
+        <button onclick="getUserLocation()" class="ground-station">GET USER LOCATION</button> 
+		<button onclick="setUserLocation()" class="user-location">SET USER LOCATION</button> 
+		<input type="text" name="latitude"  id="lat"  style="width: 150px; padding: 2px;" form="myform" size="10" placeholder="Latitude"/> 
+		<input type="text" name="longitude"  id="long"  style="width: 150px; padding: 2px;" form="myform" size="10" placeholder="Longitude"/> 
+		</div>  
+		
+        <div id="map" style="position:absolute; left:420px; width: 540px; height: 270px; border-style: solid; border-width:2px; margin-top: 1px;">
+		</div>
+	
+		<div id="passes" style="position:absolute; top:360px; left:245px"></div>
+		
+	</div>
     <!-- Modal content -->
     <div id="infoModal">
         <span id="closeModalBtn" onclick="closeInfoModal()">&times;</span>
@@ -59,6 +75,54 @@
             const modal = document.getElementById('infoModal');
             modal.style.display = 'none';
         }
+		
+		function resetPage() {
+            // Refresh the page
+            location.reload();
+        }
+
+        function getUserLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(onSuccess, onErrorFunc, { maximumAge: 60000, timeout: 5000, enableHighAccuracy: true });
+            } else {
+                alert('Error finding location, please use Select Location button instead');
+            }
+        }
+
+        function onSuccess(location) {
+			// Update the latitude and longitude in Orb.startTracking
+            Orb.startTracking(document.getElementById('map'), location.coords.latitude, location.coords.longitude);
+            Orb.generateTable(document.getElementById('passes'));
+        }
+
+        function onErrorFunc(error) {
+            alert('Error finding location: ' + error.message);
+        }
+		
+		function getLocationInput() {
+        // Get latitude and longitude from input fields
+        const latitudeInput = document.getElementById('lat');
+        const longitudeInput = document.getElementById('long');
+        const latitude = parseFloat(latitudeInput.value);
+        const longitude = parseFloat(longitudeInput.value);
+
+        if (isNaN(latitude) || isNaN(longitude)) {
+            alert('Please enter valid latitude and longitude.');
+            return null;
+        }
+
+        return { latitude, longitude };
+		}
+
+		function setUserLocation() {
+			const location = getLocationInput();
+
+			if (location) {
+				// Set home location and track satellites
+				Orb.startTracking(document.getElementById('map'), location.latitude, location.longitude);
+				Orb.generateTable(document.getElementById('passes'));
+			}
+		}
     </script>
 </body>
 
