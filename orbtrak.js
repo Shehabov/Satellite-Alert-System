@@ -1,5 +1,15 @@
-
+geostationary_sats = [
+    [14, 'TURKSAT 5B'],
+    [15, 'TURKSAT 5A'],
+    [16, 'TURKSAT 4B'],
+    [17, 'TURKSAT 4A'],
+    [18, 'TURKSAT 3A'],
+    [19, 'TURKSAT 2A'],
+    [20, 'TURKSAT 1C'],
+    [21, 'TURKSAT 1B']
+];
 var Orb = {
+	
     satelliteMarkers: new Array(),
     isInitialized: false, // New flag to track initialization status
 
@@ -62,7 +72,7 @@ var Orb = {
 			div.id = "satelliteMarker" + markerCount;
 			Orb.crossBrowserSetStyle(div, "position:absolute; width: 24px; height: 24px; background-image: url(orbimages/sas.png);", false);
 			var innerDiv = document.createElement("div");
-			Orb.crossBrowserSetStyle(innerDiv, "position:absolute; left: 8px; top: 5px;");
+			Orb.crossBrowserSetStyle(innerDiv, "position:absolute; left: 7px; top: 5px; font-size: 12px;");
 			var txt = document.createTextNode(txt);
 
 			innerDiv.appendChild(txt);
@@ -86,7 +96,9 @@ var Orb = {
 			for (var i = 0; i < PLib.sat.length; i++)
 			{
 				satInfo = PLib.QuickFind(PLib.sat[i].name);
-
+				
+				//console.log("Satellite Name:", PLib.sat[i].name);
+				
 				Orb.satelliteMarkers[i].style.top = ((-satInfo.latitude + 90) * 1.5 - 12.0) + "px";
 				Orb.satelliteMarkers[i].style.left =  ((satInfo.longitude + 180) * 1.5 - 12.0) + "px";
 			}
@@ -112,23 +124,21 @@ var Orb = {
 			tr.appendChild(th);
 		},
 
-		generateTable: function(divTable)
-		{
+		generateTable: function(divTable) {
 			var tr, visibilityText, detailClassName;
 			var frag = document.createDocumentFragment();
 			var satInfoColl = PLib.getTodaysPasses();
-			
-			while (divTable.childNodes.length > 0)
-			{
-			    divTable.removeChild(divTable.firstChild);
+
+			while (divTable.childNodes.length > 0) {
+				divTable.removeChild(divTable.firstChild);
 			}
-			
+
 			var tbl = document.createElement("table");
 			Orb.crossBrowserSetStyle(tbl, "border-collapse: collapse; margin-left: auto; margin-right: auto;", false);
-			
+
 			var thead = document.createElement("thead");
 			tr = document.createElement("tr");
-			
+
 			Orb.createHeaderColumn(tr, '# on Map');
 			Orb.createHeaderColumn(tr, 'Name');
 			Orb.createHeaderColumn(tr, 'Pass #');
@@ -138,18 +148,17 @@ var Orb = {
 			Orb.createHeaderColumn(tr, 'Azimuth');
 			Orb.createHeaderColumn(tr, 'Range (km)');
 			Orb.createHeaderColumn(tr, 'Visibility');
-			
+
 			thead.appendChild(tr);
 			tbl.appendChild(thead);
-			
+
 			var tbody = document.createElement("tbody");
-			
-			for (var i = 0; i < satInfoColl.length; i++)
-			{
+
+			for (var i = 0; i < satInfoColl.length; i++) {
 				tr = document.createElement("tr");
-				
+
 				detailClassName = satInfoColl[i].visibility == "+" ? "orb-detailVisible" : "orb-detail";
-				
+
 				Orb.createCell(tr, detailClassName, satInfoColl[i].number);
 				Orb.createCell(tr, detailClassName, satInfoColl[i].name);
 				Orb.createCell(tr, detailClassName, satInfoColl[i].passNo);
@@ -158,26 +167,45 @@ var Orb = {
 				Orb.createCell(tr, detailClassName, satInfoColl[i].peakElevation + "\u00B0");
 				Orb.createCell(tr, detailClassName, satInfoColl[i].riseAzimuth + ", " + satInfoColl[i].peakAzimuth + ", " + satInfoColl[i].decayAzimuth);
 				Orb.createCell(tr, detailClassName, satInfoColl[i].riseRange + ", " + satInfoColl[i].peakRange + ", " + satInfoColl[i].decayRange);
-				
-				switch(satInfoColl[i].visibility)
-				{
+
+				switch (satInfoColl[i].visibility) {
 					case "+":
 						visibilityText = 'Visible';
-						break;    
+						break;
 					case "*":
 						visibilityText = 'Not Visible';
 						break;
 					default:
 						visibilityText = 'Eclipsed';
 				}
-				
+
 				Orb.createCell(tr, detailClassName, visibilityText);
-				
+
 				tbody.appendChild(tr);
-			}
-			
+				}
+				
+			    // Handle geostationary satellites separately
+				for (var i = 0; i < geostationary_sats.length; i++) {
+					tr = document.createElement("tr");
+					detailClassName = "orb-detail";
+					console.log("geostationary_sats[" + i + "][0]:", geostationary_sats[i][0]);
+
+					// Use geostationary_sats[i][0] and geostationary_sats[i][1] for the number and name
+					Orb.createCell(tr, detailClassName, geostationary_sats[i][0].toString());
+					Orb.createCell(tr, detailClassName, geostationary_sats[i][1].toString());
+
+					// Add placeholders ("-") for the remaining columns
+					for (var j = 0; j < 7; j++) {
+						Orb.createCell(tr, detailClassName, "-");
+					}
+
+					tbody.appendChild(tr);
+				}
+
 			tbl.appendChild(tbody);
 			frag.appendChild(tbl);
 			divTable.appendChild(frag);
+
 		}
-	}
+
+}
