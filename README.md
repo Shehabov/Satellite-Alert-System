@@ -1,6 +1,7 @@
 # Satellite Alert System
+## Turkish National Satellite Tracking & Monitoring Platform
 
-Welcome to the Satellite Alert System repository! This project provides a real-time satellite tracking system with features to visualize satellite orbits and generate pass tables. Below is an in-depth guide on how to use, deploy, and set up the system.
+Welcome to the Satellite Alert System repository! This webapp provides a real-time Turkish National Satellite Tracking & Monitoring Platform with features to visualize satellite orbits and generate pass tables. Following is an in-depth guide on how to use, deploy, and set up the system. The webapp is hosted at ### https://shehabov.github.io/Satellite-Alert-System/
 
 ## File Structure
 
